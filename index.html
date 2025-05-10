@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Clock Suite</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <h2>Clock Suite</h2>
+      <ul>
+        <li onclick="showSection('clock')">🕒 Clock</li>
+        <li onclick="showSection('stopwatch')">⏱ Stopwatch</li>
+        <li onclick="showSection('timer')">⏳ Timer</li>
+        <li onclick="showSection('alarm')">🔔 Alarm</li>
+        <li onclick="showSection('world')">🌍 World Clock</li>
+      </ul>
+    </aside>
+    <main class="content">
+      <!-- Clock Section -->
+      <section id="clock" class="section active">
+        <div class="time-container">
+          <div class="circle" style="--clr:#ff2972;">
+            <svg><circle cx="70" cy="70" r="70"></circle><circle cx="70" cy="70" r="70" id="hh"></circle></svg>
+            <div id="hours">00</div><span>Hours</span>
+          </div>
+          <div class="circle" style="--clr:#00c3ff;">
+            <svg><circle cx="70" cy="70" r="70"></circle><circle cx="70" cy="70" r="70" id="mm"></circle></svg>
+            <div id="minutes">00</div><span>Minutes</span>
+          </div>
+          <div class="circle seconds-circle" style="--clr:#04fc43;">
+            <svg><circle cx="70" cy="70" r="70"></circle><circle cx="70" cy="70" r="70" id="ss"></circle></svg>
+            <div id="seconds">00</div><span>Seconds</span>
+          </div>
+        </div>
+        <div class="ampm-container">
+          <div class="ap" id="ampm">AM</div>
+          <div class="day" id="dayText">Monday</div>
+          <button onclick="toggleFormat()" class="toggle-btn">Toggle 12/24 Hr</button>
+        </div>
+      </section>
+      <!-- Stopwatch Section -->
+      <section id="stopwatch" class="section">
+        <div class="time-container">
+          <div class="circle" style="--clr:#00c3ff;">
+            <svg><circle cx="70" cy="70" r="70"></circle><circle cx="70" cy="70" r="70" id="swCircle"></circle></svg>
+            <div id="sw-time">00:00:00</div>
+            <span>Stopwatch</span>
+          </div>
+        </div>
+        <div>
+          <button onclick="startStopwatch()">Start</button>
+          <button onclick="stopStopwatch()">Stop</button>
+          <button onclick="resetStopwatch()">Reset</button>
+        </div>
+      </section>
+      <!-- Timer Section -->
+      <section id="timer" class="section">
+        <div class="time-container">
+          <div class="circle" style="--clr:#04fc43;">
+            <svg><circle cx="70" cy="70" r="70"></circle><circle cx="70" cy="70" r="70" id="timerCircle"></circle></svg>
+            <div id="timerDisplay">00:00:00</div>
+            <span>Timer</span>
+          </div>
+        </div>
+        <div>
+          <input type="number" id="inputHours" placeholder="HH" min="0">
+          <input type="number" id="inputMinutes" placeholder="MM" min="0" max="59">
+          <input type="number" id="inputSeconds" placeholder="SS" min="0" max="59">
+          <br/>
+          <button onclick="startTimer()">Start</button>
+          <button onclick="pauseTimer()">Pause</button>
+          <button onclick="resetTimer()">Reset</button>
+        </div>
+      </section>
+      <!-- ✅ Alarm Section -->
+      <section id="alarm" class="section">
+        <h1>Set Alarm</h1>
+        <input type="time" id="alarmTime">
+        <input type="text" id="alarmLabel" placeholder="Label">
+        <div>
+          <button onclick="setAlarm()">Set</button>
+        </div>
+        <ul id="alarmList"></ul>
+      </section>
+      <!-- World Clock Section -->
+      <section id="world" class="section">
+        <h1>World Clock</h1>
+        <div id="worldClocks">
+          <div><h3>India</h3><p id="indiaTime"></p></div>
+          <div><h3>New York</h3><p id="nyTime"></p></div>
+          <div><h3>London</h3><p id="londonTime"></p></div>
+          <div><h3>Tokyo</h3><p id="tokyoTime"></p></div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
